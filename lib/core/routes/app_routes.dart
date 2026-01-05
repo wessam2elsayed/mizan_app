@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/presentation/screens/aqsat.dart';
+import 'package:mizan_app/presentation/screens/currency_converter.dart';
 import 'package:mizan_app/presentation/screens/home_screen.dart';
 import 'package:mizan_app/presentation/screens/login_screen.dart';
+import 'package:mizan_app/presentation/screens/masrouf.dart';
+import 'package:mizan_app/presentation/screens/personal_data.dart';
 
 
 abstract class AppRoutes {
   static const splashScreen='/slashScreen';
   static const homeScreen='/homeScreen';
   static const loginScreen='/loginScreen';
+  static const currencyConverter="/currencyConverter";
+  static const aqsat="/aqsat";
+  static const masrouf="/masrouf";
+  static const personalData="/personalData";
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings){
 
@@ -17,6 +25,18 @@ abstract class AppRoutes {
 
      case loginScreen:
       return  MaterialPageRoute(builder: (_)=>const LoginScreen());
+
+      case currencyConverter:
+      return  MaterialPageRoute(builder: (_)=>const CurrencyConverter());
+
+      case aqsat:
+      return  MaterialPageRoute(builder: (_)=>const Aqsat());
+
+      case masrouf:
+      return  MaterialPageRoute(builder: (_)=>const Masrouf());
+
+      case personalData:
+      return  MaterialPageRoute(builder: (_)=>const PersonalData());
 
     }
     
