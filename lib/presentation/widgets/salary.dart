@@ -3,20 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:mizan_app/core/strings/app_strings.dart';
 
 class Salary extends StatefulWidget {
-  const Salary({super.key});
+final   TextEditingController salaryController;
+  const Salary({super.key, 
+  required this.salaryController});
 
   @override
   State<Salary> createState() => _SalaryState();
 }
 
 class _SalaryState extends State<Salary> {
-  TextEditingController salaryController=TextEditingController();
   bool secureText=true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-              controller: salaryController,
+              controller: widget.salaryController,
                obscureText: secureText,
               textAlign: TextAlign.right,
               keyboardType: TextInputType.number,

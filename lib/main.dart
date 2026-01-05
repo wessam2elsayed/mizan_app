@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/routes/app_routes.dart';
 import 'package:mizan_app/presentation/screens/splash_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await HiveModel().init();
   runApp(const MyApp());
 }
 

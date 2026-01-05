@@ -3,20 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:mizan_app/core/strings/app_strings.dart';
 
 class Balance extends StatefulWidget {
-  const Balance({super.key});
+  final TextEditingController balaanceController;
+  const Balance({super.key, required this.balaanceController});
 
   @override
   State<Balance> createState() => _BalanceState();
 }
 
 class _BalanceState extends State<Balance> {
-  TextEditingController balaanceController=TextEditingController();
+  
    bool secureText=true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-              controller: balaanceController,
+              controller:widget.balaanceController,
               obscureText: secureText,
               // textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,

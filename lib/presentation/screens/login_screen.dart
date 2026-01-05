@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/strings/app_strings.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
 import 'package:mizan_app/presentation/widgets/balance.dart';
@@ -16,6 +17,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  // final HiveModel hiveModel=HiveModel();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +38,21 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(width: 300,height: 200,
             child: Image.asset("assets/images/login.gif"),),
-            Name(),
+            Name(nameController: TextEditingController(),),
             const SizedBox(height: 20,),
-            Email(),
+            Email(emailController: TextEditingController(),),
             const SizedBox(height: 20,),
-            Salary(),
+            Salary(salaryController: TextEditingController(),),
             const SizedBox(height: 20,),
-            Balance(),
+            Balance(balaanceController: TextEditingController(),),
             const SizedBox(height: 20,),
             ChooseCountry(),
             
             const SizedBox(height: 20,),
-            LoginButton()
+            LoginButton(nameController: TextEditingController(),
+            emailController: TextEditingController(),
+             salaryController: TextEditingController(),
+             balanceController: TextEditingController(),)
         
         ],),
       ),
