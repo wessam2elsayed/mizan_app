@@ -19,7 +19,7 @@ class HiveMapModel {
     };
   }
  
-  factory HiveMapModel.fromMap(Map<String,dynamic> json){
+  factory HiveMapModel.fromMap(Map<dynamic,dynamic> json){
     return HiveMapModel(
       name: json["name"],
        email: json["email"],

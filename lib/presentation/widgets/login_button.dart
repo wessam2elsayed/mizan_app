@@ -25,8 +25,13 @@ class LoginButton extends StatefulWidget {
 class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      color: AppColors.green,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.green,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+        )
+      ),
       onPressed: (){
         if(widget.nameController.text.isNotEmpty &&
          widget.emailController.text.isNotEmpty &&
@@ -42,7 +47,13 @@ class _LoginButtonState extends State<LoginButton> {
             });
 
              Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
-          }
+             print(HiveModel().getData().length);
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(AppStrings.fillAllFields,
+              style: TextStyle(color: AppColors.black),),
+              backgroundColor: AppColors.lightGreen,)
+            );}
         
        
       },

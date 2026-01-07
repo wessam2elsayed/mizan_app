@@ -6,4 +6,9 @@ class AppStrings {
   static String balance="الرصيد البنكي";
   static String country="اختر بلدك";
   static String login="تسجيل الدخول";
+  static String fillAllFields="من فضلك تأكد من صحة ادخال البيانات";
+  static String logOut="تسجيل الخروج";
+  static String egypt="مصر";
+  static String edit="تعديل";
+
 }

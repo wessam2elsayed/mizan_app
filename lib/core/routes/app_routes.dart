@@ -5,6 +5,7 @@ import 'package:mizan_app/presentation/screens/home_screen.dart';
 import 'package:mizan_app/presentation/screens/login_screen.dart';
 import 'package:mizan_app/presentation/screens/masrouf.dart';
 import 'package:mizan_app/presentation/screens/personal_data.dart';
+import 'package:mizan_app/presentation/screens/splash_screen.dart';
 
 
 abstract class AppRoutes {
@@ -19,6 +20,9 @@ abstract class AppRoutes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings){
 
     switch (settings.name){
+
+      case splashScreen:
+      return MaterialPageRoute(builder: (_)=>const SplashScreen());
        
      case homeScreen:
       return MaterialPageRoute(builder: (_)=>const HomeScreen()); 

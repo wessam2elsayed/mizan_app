@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
 
-class MizanLabel extends StatelessWidget {
+class MizanLabel extends StatefulWidget {
   const MizanLabel({super.key});
+
+  @override
+  State<MizanLabel> createState() => _MizanLabelState();
+}
+
+class _MizanLabelState extends State<MizanLabel> {
+final String username="";
+  
+
+  @override
+  void initState() {
+    super.initState();
+    final data = HiveModel().getData();
+    if(data.isNotEmpty){
+      setState(() {
+        username!=data[0].name;
+      });
+    }
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +42,7 @@ class MizanLabel extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-            Container(width: 350,height: 100,
+            Container(width: 250,height: 100,
             decoration: BoxDecoration(
               color: AppColors.blue,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
@@ -29,7 +51,8 @@ class MizanLabel extends StatelessWidget {
               )
             ),
             
-            child: Center(child: Text("أهلا بك فى الميزان يا ",
+            child: Center(child: Text("أهلا بك فى الميزان يا \n"
+           " $username",
             style: TextStyle(
               color: AppColors.white,
               fontSize: 20,

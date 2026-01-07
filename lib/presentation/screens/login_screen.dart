@@ -10,13 +10,23 @@ import 'package:mizan_app/presentation/widgets/name.dart';
 import 'package:mizan_app/presentation/widgets/salary.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  
+
+   const LoginScreen({super.key});
+
+   
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+
 class _LoginScreenState extends State<LoginScreen> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final salaryController = TextEditingController();
+  final balanceController = TextEditingController();
+  
 
   // final HiveModel hiveModel=HiveModel();
   
@@ -24,7 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Padding(
+      body: SingleChildScrollView(
+        child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           
@@ -38,24 +49,25 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(width: 300,height: 200,
             child: Image.asset("assets/images/login.gif"),),
-            Name(nameController: TextEditingController(),),
+            Name(nameController: nameController,),
             const SizedBox(height: 20,),
-            Email(emailController: TextEditingController(),),
+            Email(emailController: emailController,),
             const SizedBox(height: 20,),
-            Salary(salaryController: TextEditingController(),),
+            Salary(salaryController: salaryController,),
             const SizedBox(height: 20,),
-            Balance(balaanceController: TextEditingController(),),
+            Balance(balaanceController: balanceController,),
             const SizedBox(height: 20,),
             ChooseCountry(),
             
             const SizedBox(height: 20,),
-            LoginButton(nameController: TextEditingController(),
-            emailController: TextEditingController(),
-             salaryController: TextEditingController(),
-             balanceController: TextEditingController(),)
+            LoginButton(nameController: nameController,
+            emailController: emailController,
+             salaryController: salaryController,
+             balanceController: balanceController,)
         
         ],),
       ),
+      )
     );
   }
 }
