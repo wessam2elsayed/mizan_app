@@ -42,8 +42,8 @@ class _BalanceState extends State<Balance> {
              ], 
               validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return " من فضلك تأكد من صحة ادخال البيانات ";
-                  } 
+                    return AppStrings.emptyField;
+                  } return null;
                 },          
             );
   }

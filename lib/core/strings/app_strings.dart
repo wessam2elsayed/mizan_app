@@ -10,5 +10,6 @@ class AppStrings {
   static String logOut="تسجيل الخروج";
   static String egypt="مصر";
   static String edit="تعديل";
+  static String emptyField="This field is required";
 
 }
