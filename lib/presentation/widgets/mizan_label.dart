@@ -1,30 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
 
-class MizanLabel extends StatefulWidget {
-  const MizanLabel({super.key});
-
-  @override
-  State<MizanLabel> createState() => _MizanLabelState();
-}
-
-class _MizanLabelState extends State<MizanLabel> {
-final String username="";
-  
-
-  @override
-  void initState() {
-    super.initState();
-    final data = HiveModel().getData();
-    if(data.isNotEmpty){
-      setState(() {
-        username!=data[0].name;
-      });
-    }
-
-  }
-
+class MizanLabel extends StatelessWidget {
+  final String txt;
+  const MizanLabel({super.key, required this.txt});
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +12,15 @@ final String username="";
       child: Column(
        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text("ميزان",
-          style: TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-            fontFamily: "ReemKufi"
-          ),),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Text("ميزان",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              fontFamily: "ReemKufi"
+            ),),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -51,8 +33,8 @@ final String username="";
               )
             ),
             
-            child: Center(child: Text("أهلا بك فى الميزان يا \n"
-           " $username",
+            child: Center(child: Text(txt,
+            textAlign: TextAlign.right,
             style: TextStyle(
               color: AppColors.white,
               fontSize: 20,

@@ -11,5 +11,9 @@ class AppStrings {
   static String egypt="مصر";
   static String edit="تعديل";
   static String emptyField="This field is required";
+  static String currencyConverter="فى هذه الغرفة يمكنك تحويل العملات الى قيمتها الدولارية";
+  static String chooseCurrency="اختر العملة المراد تحويلها";
+  static String entermoney="ادخل المبلغ";
+  static String convert="تحويل";
 
 }
