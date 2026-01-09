@@ -39,35 +39,33 @@ class _ChooseCountryState extends State<ChooseCountry> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
-      dropdownColor: AppColors.lightGreen,
-      alignment: Alignment.centerRight,
+    return DropdownButton(
+      dropdownColor: AppColors.lightBlue,
+      isExpanded: true,
+      menuWidth: 200,
+      alignment: AlignmentDirectional.centerEnd,
       borderRadius: BorderRadius.circular(10),
-      
-      decoration: InputDecoration(
-        labelText: AppStrings.country,
-        labelStyle: TextStyle(
-          fontFamily: "ReadexPro",
+      hint: Text( AppStrings.country,
+       style: TextStyle(
+        fontSize: 20,
+          color: AppColors.black,
+        fontWeight: FontWeight.w500,
+        fontFamily: "ReadexPro",),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: AppColors.grey)
-        ),
-        enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.green),
-                    ),
-      ),
-    
       value: selectedCountry,
       items: countries.map((country){
-        return DropdownMenuItem<String>(
+        return DropdownMenuItem(
+          alignment: AlignmentDirectional.centerStart,
         value: country,
-        child:Text(country)
+        child:Text(country,
+        style: TextStyle(
+          fontSize: 20,
+          color: AppColors.black,
+          fontFamily: "Readexpro",),
+        ),
         );
       }).toList(),
-      
+  
        onChanged: (value){
         setState(() {
           selectedCountry = value;

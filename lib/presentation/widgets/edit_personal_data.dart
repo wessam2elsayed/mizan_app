@@ -111,7 +111,9 @@ class _EditPersonalDataState extends State<EditPersonalData> {
                 style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.blue),
                 onPressed: (){
-                   Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+                  Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+                   
+                   
                 },
                child: Text(AppStrings.edit,
               style: TextStyle(

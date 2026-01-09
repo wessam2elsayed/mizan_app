@@ -16,7 +16,6 @@ class Name extends StatelessWidget {
               controller: nameController,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
-                // hintText:  AppStrings.name,
                 labelText: AppStrings.name,       
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)

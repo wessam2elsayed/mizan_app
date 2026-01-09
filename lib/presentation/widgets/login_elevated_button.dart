@@ -10,13 +10,16 @@ class LoginElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
        style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.green,
+        backgroundColor: AppColors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10)
         )
       ),
       onPressed: onPressed,
        child:  Text(AppStrings.login,
-     style: TextStyle(color: AppColors.white),));
+     style: TextStyle(color: AppColors.white,
+     fontSize: 20,
+        fontFamily: "ReadexPro"),
+     ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/routes/app_routes.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
 import 'package:mizan_app/presentation/widgets/home_container.dart';
@@ -12,6 +13,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+   String username="";
+  
+
+  @override
+  void initState() {
+    super.initState();
+    final data = HiveModel().getData();
+    if(data.isNotEmpty){
+      setState(() {
+        username=data[0].name;
+      });
+    }
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
         children: [
-          MizanLabel(),
+          MizanLabel(txt: "أهلا بك فى الميزان يا \n"
+           " $username",),
           HomeContainer(
             img: "assets/images/dolar.png",
              txt: "حساب تحويل العملات إلى  الدولار",

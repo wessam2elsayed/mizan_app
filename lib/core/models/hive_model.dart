@@ -27,6 +27,11 @@ class HiveModel {
     return box?.values.map((e)=>HiveMapModel.fromMap(e)).toList()??[];
   }
 
+ 
+void updateData(int key, Map data) {
+    box!.put(key, data);
+}
+
   void deleteData(int index){
     box!.deleteAt(index);
   }

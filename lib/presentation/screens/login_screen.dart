@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(AppStrings.fillAllFields,
               style: TextStyle(color: AppColors.black),),
-              backgroundColor: AppColors.lightGreen,)
+              backgroundColor: AppColors.lightBlue,)
             );
                 }
               }
