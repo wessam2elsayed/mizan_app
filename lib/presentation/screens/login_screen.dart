@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20,),
               Salary(salaryController: salaryController,),
               const SizedBox(height: 20,),
-              Balance(balaanceController: balanceController,),
+              Balance(balanceController: balanceController,),
               const SizedBox(height: 20,),
               ChooseCountry(),
               
@@ -74,8 +74,8 @@ class _LoginScreenState extends State<LoginScreen> {
               HiveModel().addData(HiveMapModel(
                   name:nameController.text,
                     email: emailController.text,
-                    salary: int.parse(salaryController.text),
-                    balance: int.parse(balanceController.text),
+                    salary: num.parse(salaryController.text),
+                    balance: num.parse(balanceController.text),
                  ));
             });
 

@@ -1,8 +1,8 @@
 class HiveMapModel {
  final String name;
  final String email;
- final int salary;
- final int balance;
+ final num salary;
+ final num balance;
 
  const HiveMapModel({
    required this.name,

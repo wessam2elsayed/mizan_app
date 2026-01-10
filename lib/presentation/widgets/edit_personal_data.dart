@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/core/models/hive_map_model.dart';
 import 'package:mizan_app/core/models/hive_model.dart';
-import 'package:mizan_app/core/routes/app_routes.dart';
 import 'package:mizan_app/core/strings/app_strings.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
-import 'package:mizan_app/presentation/widgets/circle_text_column.dart';
+import 'package:mizan_app/presentation/widgets/balance.dart';
+import 'package:mizan_app/presentation/widgets/choose_country.dart';
+import 'package:mizan_app/presentation/widgets/email.dart';
+import 'package:mizan_app/presentation/widgets/name.dart';
+import 'package:mizan_app/presentation/widgets/salary.dart';
 
 class EditPersonalData extends StatefulWidget {
   const EditPersonalData({super.key});
@@ -13,124 +17,83 @@ class EditPersonalData extends StatefulWidget {
 }
 
 class _EditPersonalDataState extends State<EditPersonalData> {
-   String username="";
-   String email="";
-   String salary="";
-   String balance="";
-   String selectedCountry="";
 
+  final  nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final salaryController = TextEditingController();
+  final balanceController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
   
-  @override   
-  void initState() {
-    super.initState();
-    final data = HiveModel().getData();
-    if(data.isNotEmpty){
-      setState(() {
-        username=data[0].name;
-        email=data[0].email;
-        salary = data[0].salary.toString(); 
-        balance = data[0].balance.toString();
-      });
-    }
-
-  }
+  final HiveModel hiveModel=HiveModel();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 500,
-            decoration: BoxDecoration(
-              color: AppColors.lightBlue,
-             borderRadius: BorderRadius.circular(20),),
-            
-          ),
-        ),
-         Positioned(
-           top: -25,
-           left: MediaQuery.of(context).size.width/2-50,
-           child: CircleAvatar(
-                radius: 58,
-                backgroundColor: AppColors.lightBlue,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/slogan.gif"),
-                  radius: 50,
-                  backgroundColor: AppColors.white,
-                ),
-              ),
-         ),
-       Positioned(
-            top: 100,
-            left: 40,
-            right: 40,
-         child: Column(    
-              children: [
-               
-              Text(username,
-              style: TextStyle(
-                fontSize: 20,
-                color: AppColors.black
-              ),),
-              const SizedBox(height: 20,),
-              Text(email,
-              style: TextStyle(
-                fontSize: 20,
-                color: AppColors.black
-              ),),
-              const SizedBox(height: 20,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.blue),
-                onPressed: (){},
-               child: Text(AppStrings.egypt,
-              style: TextStyle(
-                fontSize: 20,
-                color: AppColors.white
-              ),
-              ),
-              ),
-              const SizedBox(height: 20,),
-              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CircleTextColumn(bal: salary, txt: AppStrings.salary,),
-                
-                CircleTextColumn(bal: balance, txt: AppStrings.balance,)
-                  
-              ],),
-               const SizedBox(height: 20,),
+    return AlertDialog(
+       title: Form(
+          key: _formKey,
+         child: Column(children: [
+          Text(AppStrings.editPersonalData,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "ReadexPro",),),
 
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.blue),
-                onPressed: (){
-                  Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
-                   
-                   
-                },
-               child: Text(AppStrings.edit,
-              style: TextStyle(
-                fontSize: 20,
-                color: AppColors.white
-              ),
-              ),
-              ),
-              ],
-            ),
-       ),
-          
-          
-      
-      ],
-        
-      ),
+                           const SizedBox(height: 20,),
+                           Name(nameController: nameController,),
+                           const SizedBox(height: 20,),
+                           Email(emailController: emailController,),
+                           const SizedBox(height: 20,),
+                           Salary(salaryController: salaryController,),
+                           const SizedBox(height: 20,),
+                           Balance(balanceController: balanceController,),
+                           const SizedBox(height: 20,),
+                           ChooseCountry(),              
+                           const SizedBox(height: 20,),
+
+                           Row(children: [
+                            ElevatedButton(
+                              onPressed: 
+                              (){
+                                if(_formKey.currentState!.validate()){
+                                   setState(() {
+                                     HiveModel().updateData(0,HiveMapModel(
+                                     name:nameController.text,
+                                     email: emailController.text,
+                                     salary: num.parse(salaryController.text),
+                                     balance: num.parse(balanceController.text),
+                                    ).toMap()
+                                    );
+                                   });
+                                   
+                                    Navigator.of(context).pop();
+                                    
+                                };
+                              },
+                             child: Text(AppStrings.save,
+                             style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "ReadexPro",),)),
+
+                            const SizedBox(width: 20,),
+                            ElevatedButton(
+                              onPressed: (){
+                                Navigator.of(context).pop();
+                              },
+                               child: Text(AppStrings.cancel,
+                               style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "ReadexPro",),)),
+                           ],)
+         
+         ],),
+       )
+                        
     );
   }
 }

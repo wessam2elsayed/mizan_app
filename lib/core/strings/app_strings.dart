@@ -15,5 +15,10 @@ class AppStrings {
   static String chooseCurrency="اختر العملة المراد تحويلها";
   static String entermoney="ادخل المبلغ";
   static String convert="تحويل";
+  static String editPersonalData="تعديل البيانات الشخصية";
+  static String save="حفظ";
+  static String cancel="إلغاء";
+  static String AqsatLabel="فى هذه الغرفة يتم عرض أو إضافة أو حذف الأقساط الملتزم بها حاليا";
+  static String noAqsat="ليس لديك أى قسط بعد";
 
 }
