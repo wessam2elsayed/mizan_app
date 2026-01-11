@@ -118,11 +118,10 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
                 backgroundColor: AppColors.blue),
                 onPressed: ()async{
                 await showDialog(context: context,
-                  builder: (context){
-                    return EditPersonalData();
-
-                  }
+                  builder: (context)=> EditPersonalData()
+                  
                  );
+                 refreshData();
                 },
                child: Text(AppStrings.edit,
               style: TextStyle(

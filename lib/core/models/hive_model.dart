@@ -29,7 +29,7 @@ class HiveModel {
 
  
 void updateData(int key, Map data) {
-    box!.put(key, data);
+    box!.putAt(key, data);
 }
 
   void deleteData(int index){

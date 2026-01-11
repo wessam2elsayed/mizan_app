@@ -57,17 +57,18 @@ class _EditPersonalDataState extends State<EditPersonalData> {
                               onPressed: 
                               (){
                                 if(_formKey.currentState!.validate()){
-                                   setState(() {
-                                     HiveModel().updateData(0,HiveMapModel(
-                                     name:nameController.text,
-                                     email: emailController.text,
-                                     salary: num.parse(salaryController.text),
-                                     balance: num.parse(balanceController.text),
-                                    ).toMap()
-                                    );
-                                   });
-                                   
-                                    Navigator.of(context).pop();
+                                  final updatedData = HiveMapModel(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  salary: num.parse(salaryController.text),
+                                  balance: num.parse(balanceController.text),
+                                  ).toMap();
+                                  HiveModel().updateData(0, updatedData);
+
+                                  if (mounted) {
+                                     setState(() {});
+                                     Navigator.of(context).pop();
+                                  }
                                     
                                 };
                               },
