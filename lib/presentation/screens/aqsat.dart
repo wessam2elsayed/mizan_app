@@ -1,15 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:mizan_app/core/strings/app_strings.dart';
+import 'package:mizan_app/core/theme/app_colors.dart';
+import 'package:mizan_app/presentation/widgets/add_quest.dart';
+import 'package:mizan_app/presentation/widgets/mizan_label.dart';
 
-class Aqsat extends StatefulWidget {
+class Aqsat extends StatelessWidget {
   const Aqsat({super.key});
 
   @override
-  State<Aqsat> createState() => _AqsatState();
-}
-
-class _AqsatState extends State<Aqsat> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.blue,
+        child: Icon(Icons.add,
+      color: AppColors.white),
+        onPressed: (){
+          showDialog(context: context,
+           builder: (context)=>AddQuest());
+        },
+        ),
+      backgroundColor: AppColors.babyBlue,
+      body: Column(children: [
+        MizanLabel(txt: AppStrings.AqsatLabel),
+        const SizedBox(height: 20,),
+        Text(AppStrings.noAqsat,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blue
+        ),),
+         const SizedBox(height: 20,),
+        Container(width: 300,height: 300,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/images/no quest.gif")),
+          borderRadius: BorderRadius.circular(30),
+          color: AppColors.lightBlue
+        ),
+        
+       ),
+       
+      ],),
+    );
   }
 }

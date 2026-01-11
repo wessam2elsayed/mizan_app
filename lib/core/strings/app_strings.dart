@@ -18,7 +18,12 @@ class AppStrings {
   static String editPersonalData="تعديل البيانات الشخصية";
   static String save="حفظ";
   static String cancel="إلغاء";
+  static String add="إضافة";
   static String AqsatLabel="فى هذه الغرفة يتم عرض أو إضافة أو حذف الأقساط الملتزم بها حاليا";
   static String noAqsat="ليس لديك أى قسط بعد";
+  static String addQest="إضافة القسط الشهرى";
+  static String qest="القسط الشهرى";
+  static String qestTime="الميعاد";
+  static String qestNote="ملاحظات";
 
 }
