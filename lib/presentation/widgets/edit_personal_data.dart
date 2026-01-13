@@ -22,19 +22,35 @@ class _EditPersonalDataState extends State<EditPersonalData> {
   final emailController = TextEditingController();
   final salaryController = TextEditingController();
   final balanceController = TextEditingController();
+  String? selectedCountryName;
 
   final _formKey = GlobalKey<FormState>();
   
   final HiveModel hiveModel=HiveModel();
 
   @override
+  void initState() {
+    super.initState();
+    final data = HiveModel().getData();
+    if (data.isNotEmpty) {
+      final user = data.last;
+      nameController.text = user.name;
+      emailController.text = user.email;
+      salaryController.text = user.salary.toString();
+      balanceController.text = user.balance.toString();
+      selectedCountryName = user.country; 
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return SingleChildScrollView(
+      child: AlertDialog(
        title: Form(
           key: _formKey,
          child: Column(children: [
           Text(AppStrings.editPersonalData,
-                        style: TextStyle(
+                        style:const TextStyle(
                           fontSize: 20,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
@@ -49,7 +65,10 @@ class _EditPersonalDataState extends State<EditPersonalData> {
                            const SizedBox(height: 20,),
                            Balance(balanceController: balanceController,),
                            const SizedBox(height: 20,),
-                           ChooseCountry(),              
+                           ChooseCountry(
+                            onCountryChanged: (country) { 
+                              selectedCountryName = country;
+                             },),              
                            const SizedBox(height: 20,),
 
                            Row(children: [
@@ -57,23 +76,22 @@ class _EditPersonalDataState extends State<EditPersonalData> {
                               onPressed: 
                               (){
                                 if(_formKey.currentState!.validate()){
-                                  final updatedData = HiveMapModel(
+                                  final updatedUser = HiveMapModel(
                                   name: nameController.text,
                                   email: emailController.text,
                                   salary: num.parse(salaryController.text),
                                   balance: num.parse(balanceController.text),
-                                  ).toMap();
-                                  HiveModel().updateData(0, updatedData);
+                                  country: selectedCountryName ?? "",
+                                  );
+                                  HiveModel().saveOrUpdateUser(updatedUser);
 
                                   if (mounted) {
-                                     setState(() {});
-                                     Navigator.of(context).pop();
-                                  }
-                                    
-                                };
+                                   Navigator.of(context).pop();                                     
+                                  }                                    
+                                }
                               },
                              child: Text(AppStrings.save,
-                             style: TextStyle(
+                             style:const TextStyle(
                           fontSize: 15,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
@@ -85,7 +103,7 @@ class _EditPersonalDataState extends State<EditPersonalData> {
                                 Navigator.of(context).pop();
                               },
                                child: Text(AppStrings.cancel,
-                               style: TextStyle(
+                               style:const TextStyle(
                           fontSize: 15,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
@@ -95,6 +113,7 @@ class _EditPersonalDataState extends State<EditPersonalData> {
          ],),
        )
                         
+    ),
     );
   }
 }

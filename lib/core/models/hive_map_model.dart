@@ -3,12 +3,14 @@ class HiveMapModel {
  final String email;
  final num salary;
  final num balance;
+ final String country;
 
- const HiveMapModel({
+ const HiveMapModel( {
    required this.name,
    required this.email, 
    required this.salary,
-   required this.balance});
+   required this.balance,
+   required this.country,});
 
   Map<String , dynamic> toMap(){
     return{
@@ -16,6 +18,7 @@ class HiveMapModel {
       "email": email,
       "salary": salary,
       "balance":balance,
+      "country": country,
     };
   }
  
@@ -24,7 +27,9 @@ class HiveMapModel {
       name: json["name"],
        email: json["email"],
         salary: json["salary"],
-        balance: json["balance"]);
+        balance: json["balance"],
+         country: json["country"]??"");
+        
   }
 
 }

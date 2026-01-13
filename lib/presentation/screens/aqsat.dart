@@ -9,6 +9,11 @@ class Aqsat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // num qest;
+    // num qestTime;
+    // String qestNote;
+   
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.blue,

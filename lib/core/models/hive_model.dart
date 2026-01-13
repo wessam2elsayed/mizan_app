@@ -18,22 +18,41 @@ class HiveModel {
 
   }
 
-  void addData(HiveMapModel value){
+  
+
+void saveOrUpdateUser(HiveMapModel value) {
+  box!.put(value.email, value.toMap());
+}
+
+HiveMapModel? getUser(String email) {
+  final data = box!.get(email); 
+  return data != null ? HiveMapModel.fromMap(data) : null;
+}
+
+
+
+
+void updateData(int key, Map data) {
+    box!.putAt(key, data);
+}
+
+void addData(HiveMapModel value){
     box!.add(value.toMap());
   }
-
 
   List<HiveMapModel> getData(){
     return box?.values.map((e)=>HiveMapModel.fromMap(e)).toList()??[];
   }
 
  
-void updateData(int key, Map data) {
-    box!.putAt(key, data);
-}
+
 
   void deleteData(int index){
     box!.deleteAt(index);
   }
+
+  void clearAllData() async {
+  await box!.clear(); 
+}
 
 }

@@ -25,10 +25,11 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
      final data = HiveModel().getData();
     if(data.isNotEmpty){
       setState(() {
-        username=data[0].name;
-        email=data[0].email;
-        salary = data[0].salary.toString(); 
-        balance = data[0].balance.toString();
+        username=data.last.name;
+        email=data.last.email;
+        salary = data.last.salary.toString(); 
+        balance = data.last.balance.toString();
+        selectedCountry = data.last.country;
       });
     }
    }
@@ -61,7 +62,7 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
          Positioned(
            top: -25,
            left: MediaQuery.of(context).size.width/2-50,
-           child: CircleAvatar(
+           child:const CircleAvatar(
                 radius: 58,
                 backgroundColor: AppColors.lightBlue,
                 child: CircleAvatar(
@@ -79,13 +80,13 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
               children: [
                
               Text(username,
-              style: TextStyle(
+              style:const TextStyle(
                 fontSize: 20,
                 color: AppColors.black
               ),),
               const SizedBox(height: 20,),
               Text(email,
-              style: TextStyle(
+              style:const TextStyle(
                 fontSize: 20,
                 color: AppColors.black
               ),),
@@ -94,8 +95,8 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
                 style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.blue),
                 onPressed: (){},
-               child: Text(AppStrings.egypt,
-              style: TextStyle(
+               child: Text(selectedCountry,
+              style:const TextStyle(
                 fontSize: 20,
                 color: AppColors.white
               ),
@@ -118,13 +119,13 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
                 backgroundColor: AppColors.blue),
                 onPressed: ()async{
                 await showDialog(context: context,
-                  builder: (context)=> EditPersonalData()
+                  builder: (context)=>const EditPersonalData()
                   
                  );
                  refreshData();
                 },
                child: Text(AppStrings.edit,
-              style: TextStyle(
+              style:const TextStyle(
                 fontSize: 20,
                 color: AppColors.white
               ),

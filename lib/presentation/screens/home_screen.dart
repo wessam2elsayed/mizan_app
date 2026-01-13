@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final data = HiveModel().getData();
     if(data.isNotEmpty){
       setState(() {
-        username=data[0].name;
+        username=data.last.name;
       });
     }
 
@@ -39,19 +39,19 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           MizanLabel(txt: "أهلا بك فى الميزان يا \n"
            " $username",),
-          HomeContainer(
+          const HomeContainer(
             img: "assets/images/dolar.png",
              txt: "حساب تحويل العملات إلى  الدولار",
               route: AppRoutes.currencyConverter,),
-          HomeContainer(
+          const HomeContainer(
             img: "assets/images/aqsat.jpg",
             txt: "عرض الأقساط ومواعيدها",
              route:AppRoutes.aqsat, ),
-          HomeContainer(
+          const HomeContainer(
             img: "assets/images/masrouf.png",
              txt: "تنظيم المصروفات بالنسبة لدخلك الشهري",
               route: AppRoutes.masrouf,),
-          HomeContainer(
+          const HomeContainer(
             img: "assets/images/data.jpg",
              txt: "البيانات الشخصية",
               route: AppRoutes.personalData,),   

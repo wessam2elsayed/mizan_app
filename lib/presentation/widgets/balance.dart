@@ -18,7 +18,7 @@ class _BalanceState extends State<Balance> {
   Widget build(BuildContext context) {
     return TextFormField(
               controller:widget.balanceController,
-              obscureText: secureText,
+              obscureText: secureText==true?true:false,
               // textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
               keyboardType: TextInputType.number,
@@ -30,9 +30,9 @@ class _BalanceState extends State<Balance> {
                       secureText=!secureText;
                     });
                   },
-                 icon: Icon(secureText?
-                 Icons.visibility
-                 :Icons.visibility_off)),        
+                 icon: Icon(secureText==true?
+                 Icons.visibility_off
+                 :Icons.visibility)),        
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
                 ),              

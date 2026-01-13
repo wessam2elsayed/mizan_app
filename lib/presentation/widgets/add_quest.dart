@@ -8,6 +8,9 @@ import 'package:mizan_app/presentation/widgets/qest_note.dart';
 import 'package:mizan_app/presentation/widgets/qest_time.dart';
 
 class AddQuest extends StatefulWidget {
+  //  final num qest;
+  //  final num qestTime;
+  //  final String qestNote;
   const AddQuest({super.key});
 
   @override
@@ -58,7 +61,7 @@ class _AddQuestState extends State<AddQuest> {
                     String qestNote=qestNoteController.text;
                     
 
-                    print("$qestController.text");
+                    // print("$qestController.text");
 
                     Navigator.push(context,
                      MaterialPageRoute(builder: (context)=>

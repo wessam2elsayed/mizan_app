@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final salaryController = TextEditingController();
   final balanceController = TextEditingController();
+  String selectedCountryName="";
 
   final _formKey = GlobalKey<FormState>();
   
@@ -48,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Center(
                 child: Text(AppStrings.mizan,
-                style: TextStyle(
+                style:const TextStyle(
                   fontFamily: "ReemKufi",
                   fontSize: 50
                 ),),
@@ -63,28 +64,33 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20,),
               Balance(balanceController: balanceController,),
               const SizedBox(height: 20,),
-              ChooseCountry(),
+               ChooseCountry(
+                onCountryChanged: (country) {  
+                  setState(() {
+                    selectedCountryName = country??"";
+                  });
+                },),
               
               const SizedBox(height: 20,),
 
               LoginElevatedButton(onPressed:
               (){
                 if (_formKey.currentState!.validate()){
-                  setState(() {
-              HiveModel().addData(HiveMapModel(
-                  name:nameController.text,
-                    email: emailController.text,
-                    salary: num.parse(salaryController.text),
-                    balance: num.parse(balanceController.text),
-                 ));
-            });
+                  final userModel = HiveMapModel(
+                  name: nameController.text,
+                  email: emailController.text,
+                  salary: num.parse(salaryController.text),
+                  balance: num.parse(balanceController.text),
+                   country: selectedCountryName,
+                  );
+                  HiveModel().saveOrUpdateUser(userModel);
 
              Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
-             print(HiveModel().getData().length);
+              print("Total Users in Hive: ${HiveModel().box!.length}");
           }else{
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(AppStrings.fillAllFields,
-              style: TextStyle(color: AppColors.black),),
+              style:const TextStyle(color: AppColors.black),),
               backgroundColor: AppColors.lightBlue,)
             );
                 }

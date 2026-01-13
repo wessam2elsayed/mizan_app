@@ -17,7 +17,7 @@ class LoginElevatedButton extends StatelessWidget {
       ),
       onPressed: onPressed,
        child:  Text(AppStrings.login,
-     style: TextStyle(color: AppColors.white,
+     style:const TextStyle(color: AppColors.white,
      fontSize: 20,
         fontFamily: "ReadexPro"),
      ));

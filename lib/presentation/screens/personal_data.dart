@@ -13,17 +13,19 @@ class PersonalData extends StatefulWidget {
 class _PersonalDataState extends State<PersonalData> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.babyBlue,
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: [
-          const SizedBox(height: 50,),
+           SizedBox(height: 50,),
           LogoutRow(),
-           const SizedBox(height: 50,),
+            SizedBox(height: 50,),
           PersonalDataContainer(),
           
         ],
       ),
+      )
     );
   }
 }

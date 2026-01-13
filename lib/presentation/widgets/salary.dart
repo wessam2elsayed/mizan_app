@@ -18,7 +18,7 @@ class _SalaryState extends State<Salary> {
   Widget build(BuildContext context) {
     return TextFormField(
               controller: widget.salaryController,
-               obscureText: secureText,
+              obscureText: secureText==true?true:false,
               textAlign: TextAlign.right,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -29,9 +29,9 @@ class _SalaryState extends State<Salary> {
                       secureText=!secureText;
                     });
                   },
-                 icon: Icon(secureText?
-                 Icons.visibility
-                 :Icons.visibility_off)),   
+                 icon: Icon(secureText==true?
+                 Icons.visibility_off
+                 :Icons.visibility)),   
 
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10)
