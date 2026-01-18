@@ -12,7 +12,8 @@ class CardWidget extends StatelessWidget {
    required this.txt,
     required this.val,
      required this.percent,
-      required this.masroufValue, required this.rows});
+      required this.masroufValue, 
+      required this.rows});
 
   @override
   Widget build(BuildContext context) {
