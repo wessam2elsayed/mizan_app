@@ -8,6 +8,15 @@ class HiveModel {
   HiveModel._internal();
   Box? box;
 
+  static HiveMapModel? currentUser;
+
+  void loadUserSession() {
+    final data = getData(); 
+    if (data.isNotEmpty) {
+      currentUser = data.last; 
+    }
+  }
+
   Future<Box>init()async{
     if(!Hive.isBoxOpen("myBox")){
       final dir = await getApplicationDocumentsDirectory();
