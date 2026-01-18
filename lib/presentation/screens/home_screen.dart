@@ -16,17 +16,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
    String username="";
   
-
-  @override
+@override
   void initState() {
     super.initState();
-    final data = HiveModel().getData();
-    if(data.isNotEmpty){
+    if (HiveModel.currentUser != null) {
       setState(() {
-        username=data.last.name;
+        username = HiveModel.currentUser!.name;
       });
     }
-
   }
 
 

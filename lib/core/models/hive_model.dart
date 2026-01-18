@@ -11,11 +11,22 @@ class HiveModel {
   static HiveMapModel? currentUser;
 
   void loadUserSession() {
-    final data = getData(); 
-    if (data.isNotEmpty) {
-      currentUser = data.last; 
+    if (box != null && box!.isNotEmpty) {
+      final allUsers = box!.values
+          .map((e) => HiveMapModel.fromMap(e))
+          .toList();
+      if (allUsers.isNotEmpty) {
+        currentUser = allUsers.last;
+      }
     }
   }
+
+  // void loadUserSession() {
+  //   final data = getData(); 
+  //   if (data.isNotEmpty) {
+  //     currentUser = data.last; 
+  //   }
+  // }
 
   Future<Box>init()async{
     if(!Hive.isBoxOpen("myBox")){
@@ -31,6 +42,7 @@ class HiveModel {
 
 void saveOrUpdateUser(HiveMapModel value) {
   box!.put(value.email, value.toMap());
+  currentUser = value;
 }
 
 HiveMapModel? getUser(String email) {
@@ -38,8 +50,19 @@ HiveMapModel? getUser(String email) {
   return data != null ? HiveMapModel.fromMap(data) : null;
 }
 
+HiveMapModel? getLastUser() {
+    if (box == null || box!.isEmpty) return null;
+    
+    final allUsers = box!.values
+        .map((e) => HiveMapModel.fromMap(e))
+        .toList();
+    
+    return allUsers.isNotEmpty ? allUsers.last : null;
+  }
 
-
+  List<HiveMapModel> getAllUsers() {
+    return box?.values.map((e) => HiveMapModel.fromMap(e)).toList() ?? [];
+  }
 
 void updateData(int key, Map data) {
     box!.putAt(key, data);

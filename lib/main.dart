@@ -5,12 +5,8 @@ import 'package:mizan_app/presentation/screens/splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  final hive = HiveModel();
   await HiveModel().init();
-  final userData = hive.getData();
-  if (userData.isNotEmpty) {
-    HiveModel.currentUser = userData.last;
-  }
+  HiveModel().loadUserSession();
   runApp(const MyApp());
 }
 

@@ -21,18 +21,17 @@ class _EditPersonalDataState extends State<PersonalDataContainer> {
 
    final HiveModel hiveModel = HiveModel();
 
-   void refreshData(){
-     final data = HiveModel().getData();
-    if(data.isNotEmpty){
-      setState(() {
-        username=data.last.name;
-        email=data.last.email;
-        salary = data.last.salary.toString(); 
-        balance = data.last.balance.toString();
-        selectedCountry = data.last.country;
-      });
-    }
-   }
+  void refreshData() {
+  if (HiveModel.currentUser != null) {
+    setState(() {
+      username = HiveModel.currentUser!.name;
+      email = HiveModel.currentUser!.email;
+      salary = HiveModel.currentUser!.salary.toString();
+      balance = HiveModel.currentUser!.balance.toString();
+      selectedCountry = HiveModel.currentUser!.country;
+    });
+  }
+}
 
   
   @override   

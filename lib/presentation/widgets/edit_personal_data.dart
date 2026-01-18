@@ -28,19 +28,17 @@ class _EditPersonalDataState extends State<EditPersonalData> {
   
   final HiveModel hiveModel=HiveModel();
 
-  @override
-  void initState() {
-    super.initState();
-    final data = HiveModel().getData();
-    if (data.isNotEmpty) {
-      final user = data.last;
-      nameController.text = user.name;
-      emailController.text = user.email;
-      salaryController.text = user.salary.toString();
-      balanceController.text = user.balance.toString();
-      selectedCountryName = user.country; 
-    }
+ @override
+void initState() {
+  super.initState();
+  if (HiveModel.currentUser != null) {
+    nameController.text = HiveModel.currentUser!.name;
+    emailController.text = HiveModel.currentUser!.email;
+    salaryController.text = HiveModel.currentUser!.salary.toString();
+    balanceController.text = HiveModel.currentUser!.balance.toString();
+    selectedCountryName = HiveModel.currentUser!.country;
   }
+}
 
   @override
   Widget build(BuildContext context) {
