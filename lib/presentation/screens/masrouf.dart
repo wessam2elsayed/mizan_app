@@ -3,6 +3,7 @@ import 'package:mizan_app/core/models/hive_model.dart';
 import 'package:mizan_app/core/strings/app_strings.dart';
 import 'package:mizan_app/core/theme/app_colors.dart';
 import 'package:mizan_app/presentation/widgets/card_widget.dart';
+import 'package:mizan_app/presentation/widgets/masrouf_row.dart';
 import 'package:mizan_app/presentation/widgets/mizan_label.dart';
 
 
@@ -18,10 +19,9 @@ class _MasroufState extends State<Masrouf> {
   @override
   void initState() {
     super.initState();
-    final data = HiveModel().getData();
-    if(data.isNotEmpty){
+    if (HiveModel.currentUser != null) {
       setState(() {
-        salary=data.last.salary.toString();
+        salary = HiveModel.currentUser!.salary.toString();
       });
     }
   }
@@ -29,6 +29,7 @@ class _MasroufState extends State<Masrouf> {
 
   @override
   Widget build(BuildContext context) {
+    // double masroufValue=widget.salary * percent;
     return Scaffold(
       backgroundColor: AppColors.babyBlue,
       body:Column(
@@ -46,46 +47,120 @@ class _MasroufState extends State<Masrouf> {
             style:const TextStyle(color: AppColors.white,
             fontSize: 20
             ),),
-          ),),  
+          ),), 
 
-          // ListView.builder(
-          //    scrollDirection: Axis.horizontal,
-          //  shrinkWrap: true,
-          //  itemCount: 3,
-          //   itemBuilder: (context,index)=>CardWidget())
-          
-                // ElevatedButton(onPressed: (){
-                //   for (var item in data) {
-                //   print("Username: ${item.name}");
-                //   print("Email: ${item.email}");                  
-                //   print("salary:${item.salary}");
-                //   print("balance: ${item.balance}");
-                //   print("country ${item.country}");
-                //   username = item.name; 
-                //   print(HiveModel().box?.values);
-                  
+           const SizedBox(height: 20,),
+           SingleChildScrollView(
+            scrollDirection:  Axis.horizontal,
+             child: Row(
+               children: [
+                const SizedBox(width: 20,),
+                CardWidget(
+                  txt: AppStrings.invest, 
+                  val: 0.2, 
+                  percent: 20, 
+                  masroufValue: 1000, 
+                  rows: [
+                    MasroufRow(
+                      txt: AppStrings.saves, 
+                      icon: Icons.savings),
+                    MasroufRow(
+                      txt: AppStrings.debit, 
+                      icon: Icons.money),
+                    MasroufRow(
+                      txt: AppStrings.emergency, 
+                      icon: Icons.emergency)
+                  ]),
+                
+             
+                const SizedBox(width: 20,),
+                CardWidget(
+                  txt: AppStrings.valMasrouf, 
+                  val: 0.3, 
+                  percent: 30, 
+                  masroufValue: 1500,
+                   rows: [
+                    MasroufRow(
+                      txt: AppStrings.shopping,
+                      icon: Icons.shopping_bag),
+                    MasroufRow(
+                      txt: AppStrings.fun, 
+                      icon: Icons.shopping_cart),
+                    MasroufRow(
+                      txt: AppStrings.trips, 
+                      icon: Icons.train),
+                    MasroufRow(
+                      txt: AppStrings.gifts, 
+                      icon: Icons.card_giftcard)  
+                   ],),
+             
+                const SizedBox(width: 20,),
+                 CardWidget(
+                  txt:AppStrings.conMasrouf,
+                   val: 0.5,
+                    percent: 50, 
+                    masroufValue: 2500, 
+                    rows: [
+                       MasroufRow(
+          txt: AppStrings.bills,
+          icon: Icons.square,),
+         MasroufRow(
+          txt: AppStrings.education,
+          icon: Icons.book),
+         MasroufRow(
+          txt: AppStrings.healthcare,
+          icon: Icons.health_and_safety),
+         MasroufRow(
+          txt: AppStrings.transport,
+          icon: Icons.car_repair),
+         MasroufRow(
+          txt: AppStrings.call,
+          icon: Icons.phone)
+                    ],),
+             
+                   const SizedBox(width: 20,),
+               ],
+             ),
+           ) ,
 
-                // }
-        
-                // },
-                //  child: Text(AppStrings.name)),
+
+
+
+
+
+         
+                ElevatedButton(onPressed: (){
+                final box = HiveModel().box;
+    if (box != null && box.isNotEmpty) {
+      box.toMap().forEach((email, userData) {
+        print("\n━━━━━━━━━━━━━━━━━━━━");
+        print("📧 Email: $email");
+        print("👤 Name: ${userData['name']}");
+        print("💰 Salary: ${userData['salary']}");
+        print("🏦 Balance: ${userData['balance']}");
+        print("🌍 Country: ${userData['country']}");
+      });
+    } else {
+      print("No data found!");
+    }
+                 
+                },
+                 child: Text(AppStrings.name)),
       
-        //          ElevatedButton(onPressed: (){
-        //           setState(() {
-        //             // HiveModel().clearAllData();
-                        // salary = "";   
-                        // username = "";
-        //             // لو عايزة امسح كل البيانات لكن بيفضل يعرض البيانات فى الاسم ويطلع طول القائمة صفر
+                 ElevatedButton(onPressed: (){
+                  setState(() {
+                    HiveModel().clearAllData();
+                        
       
-        //   var emptyData = HiveModel().getData(); 
-        //   print("List Length: ${emptyData.length}");
+          var emptyData = HiveModel().getData(); 
+          print("List Length: ${emptyData.length}");
           
-        // });
+        });
       
       
             
-        //         },
-        //          child: Text(AppStrings.email)),
+                },
+                 child: Text(AppStrings.email)),
       ],)
     );
   }

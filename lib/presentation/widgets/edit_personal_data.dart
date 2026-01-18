@@ -28,6 +28,8 @@ class _EditPersonalDataState extends State<EditPersonalData> {
   
   final HiveModel hiveModel=HiveModel();
 
+  String? originalEmail; 
+
  @override
 void initState() {
   super.initState();
@@ -37,6 +39,7 @@ void initState() {
     salaryController.text = HiveModel.currentUser!.salary.toString();
     balanceController.text = HiveModel.currentUser!.balance.toString();
     selectedCountryName = HiveModel.currentUser!.country;
+    originalEmail = HiveModel.currentUser!.email;
   }
 }
 
@@ -81,6 +84,12 @@ void initState() {
                                   balance: num.parse(balanceController.text),
                                   country: selectedCountryName ?? "",
                                   );
+
+                                  if (originalEmail != null && 
+                                  originalEmail != emailController.text) {
+                                  HiveModel().box!.delete(originalEmail);
+                                  }
+
                                   HiveModel().saveOrUpdateUser(updatedUser);
 
                                   if (mounted) {

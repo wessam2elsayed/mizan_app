@@ -26,5 +26,20 @@ class AppStrings {
   static String qestTime="الميعاد";
   static String qestNote="ملاحظات";
   static String masroufLabel="فى هذه الصفحة يتم عرض أفضل نسبة لتنظيم المصروفات من خلال مرتبك";
+  static String conMasrouf="مصروفاتك الأساسية الثابتة";
+  static String valMasrouf="المصروفات الشخصية المتغيرة";
+  static String invest="الادخارات والاستثمارات";
+  static String bills="فواتير الكهرباء والمياه";
+  static String education="مصاريف التعليم";
+  static String healthcare="الرعاية الصحية";
+  static String transport="النقل";
+  static String call="الاتصالات";
+  static String shopping="التسوق";
+  static String fun="الأنشطة الترفيهية";
+  static String trips="الرحلات";
+  static String gifts="الهدايا";
+  static String saves="زيادة المدخرات";
+  static String debit="تعجيل سداد الديون";
+  static String emergency="حالات الطوارئ";
 
 }
