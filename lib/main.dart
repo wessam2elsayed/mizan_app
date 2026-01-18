@@ -7,7 +7,6 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final hive = HiveModel();
   await HiveModel().init();
-  // المتغيرات من الداتا تكون على مستوى الابلكيشن كله
   final userData = hive.getData();
   if (userData.isNotEmpty) {
     HiveModel.currentUser = userData.last;
