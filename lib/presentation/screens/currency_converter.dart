@@ -103,7 +103,7 @@ body: Form(
               return DropdownMenuItem(
                 value: currency,
                 child:Text(currency,
-                style: TextStyle(
+                style:const TextStyle(
                   fontSize: 15,
                   color: AppColors.black,
                   fontFamily: "Readexpro",),
@@ -117,7 +117,7 @@ body: Form(
              }),
        
              Text(AppStrings.chooseCurrency,
-             style: TextStyle(
+             style:const TextStyle(
                 fontSize: 20,
                   color: AppColors.black,
                 fontWeight: FontWeight.bold,
@@ -151,7 +151,7 @@ body: Form(
      
      child: Text("$selectedCurrency! (${currencyController.text}) = $currencyResult USD",
      textAlign: TextAlign.center,
-     style: TextStyle(
+     style:const TextStyle(
       color: AppColors.white,
       fontSize: 25,
       fontFamily: "ReadexPro",),

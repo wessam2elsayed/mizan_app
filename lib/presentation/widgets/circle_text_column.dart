@@ -16,14 +16,14 @@ class CircleTextColumn extends StatelessWidget {
                     radius: 50,
                     backgroundColor: AppColors.lightBlue,
                     child: Text(bal,
-                    style: TextStyle(
+                    style:const TextStyle(
                       fontSize: 20,
                       color: AppColors.black),)
                     ),
                   ),
                   const SizedBox(height: 10,),
                   Text(txt,
-                  style: TextStyle(
+                  style:const TextStyle(
                     fontSize: 15,
                     color: AppColors.black,
                     fontWeight: FontWeight.bold,

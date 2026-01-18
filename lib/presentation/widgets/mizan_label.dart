@@ -12,7 +12,7 @@ class MizanLabel extends StatelessWidget {
       child: Column(
        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
+         const Padding(
             padding: const EdgeInsets.only(right: 10),
             child: Text("ميزان",
             style: TextStyle(
@@ -25,7 +25,7 @@ class MizanLabel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
             Container(width: 250,height: 100,
-            decoration: BoxDecoration(
+            decoration:const BoxDecoration(
               color: AppColors.blue,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -35,14 +35,14 @@ class MizanLabel extends StatelessWidget {
             
             child: Center(child: Text(txt,
             textAlign: TextAlign.right,
-            style: TextStyle(
+            style:const TextStyle(
               color: AppColors.white,
               fontSize: 20,
               fontFamily: "ReadexPro",
             ),)),),
             const SizedBox(width: 10,),
       
-            CircleAvatar(radius: 30,
+           const CircleAvatar(radius: 30,
             backgroundColor: AppColors.black,
             backgroundImage: AssetImage("assets/images/logo (2).png"),),
           ],)

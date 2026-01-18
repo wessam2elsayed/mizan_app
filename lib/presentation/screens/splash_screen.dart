@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3),
+    Future.delayed(const Duration(seconds: 3),
     (){
       Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
     });
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Image.asset("assets/images/mizan.png"),
           Text(AppStrings.mizan,
-          style: TextStyle(
+          style:const TextStyle(
             fontFamily: "Gulzar",
             fontSize: 40,
             color: AppColors.white

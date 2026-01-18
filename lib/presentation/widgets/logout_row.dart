@@ -14,17 +14,17 @@ class LogoutRow extends StatelessWidget {
         style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.blue),
         onPressed: (){
-           Navigator.of(context).pushReplacementNamed(AppRoutes.splashScreen);
+           Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
         },
          child: Center(
           child: Text(
             AppStrings.logOut,
-            style: TextStyle(color: AppColors.white,
+            style:const TextStyle(color: AppColors.white,
          )))),
 
          const SizedBox(width: 100),
          Text(AppStrings.mizan,
-         style: TextStyle(color: AppColors.black,
+         style:const TextStyle(color: AppColors.black,
          fontSize: 50,
          fontWeight: FontWeight.bold,
          fontFamily: "ReemKufi"),)

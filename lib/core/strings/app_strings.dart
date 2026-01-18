@@ -25,5 +25,6 @@ class AppStrings {
   static String qest="القسط الشهرى";
   static String qestTime="الميعاد";
   static String qestNote="ملاحظات";
+  static String masroufLabel="فى هذه الصفحة يتم عرض أفضل نسبة لتنظيم المصروفات من خلال مرتبك";
 
 }

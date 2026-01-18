@@ -83,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   balance: num.parse(balanceController.text),
                    country: selectedCountryName,
                   );
+                  // HiveModel().clearAllData();
                   HiveModel().saveOrUpdateUser(userModel);
 
              Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);

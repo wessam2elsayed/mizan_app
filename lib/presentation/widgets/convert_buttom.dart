@@ -18,7 +18,7 @@ class ConvertButtom extends StatelessWidget {
        ),
         onPressed: onPressed,
        child: Text(AppStrings.convert,
-        style: TextStyle(color: AppColors.white,
+        style:const TextStyle(color: AppColors.white,
         fontSize: 20,
         fontFamily: "ReadexPro"),
       ),

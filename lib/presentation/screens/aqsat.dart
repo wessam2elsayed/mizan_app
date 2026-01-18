@@ -17,7 +17,7 @@ class Aqsat extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.blue,
-        child: Icon(Icons.add,
+        child:const Icon(Icons.add,
       color: AppColors.white),
         onPressed: (){
           showDialog(context: context,
@@ -28,8 +28,8 @@ class Aqsat extends StatelessWidget {
       body: Column(children: [
         MizanLabel(txt: AppStrings.AqsatLabel),
         const SizedBox(height: 20,),
-        Text(AppStrings.noAqsat,
-        style: TextStyle(
+       Text(AppStrings.noAqsat,
+        style:const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
           color: AppColors.blue
@@ -37,12 +37,13 @@ class Aqsat extends StatelessWidget {
          const SizedBox(height: 20,),
         Container(width: 300,height: 300,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage("assets/images/no quest.gif")),
+          image:const DecorationImage(image: AssetImage("assets/images/no quest.gif")),
           borderRadius: BorderRadius.circular(30),
           color: AppColors.lightBlue
         ),
         
        ),
+    
        
       ],),
     );

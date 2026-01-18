@@ -40,7 +40,7 @@ class _AddQuestState extends State<AddQuest> {
         key: _formKey,
         child: Column(children: [
           Text(AppStrings.addQest,
-          style: TextStyle(
+          style:const TextStyle(
               fontSize: 20,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _AddQuestState extends State<AddQuest> {
                        qestNote: qestNote)));
                   },
                    child: Text(AppStrings.add,
-                             style: TextStyle(
+                             style:const TextStyle(
                           fontSize: 15,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _AddQuestState extends State<AddQuest> {
                      Navigator.of(context).pop();
                   },
                    child: Text(AppStrings.cancel,
-                               style: TextStyle(
+                               style:const TextStyle(
                           fontSize: 15,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold,
