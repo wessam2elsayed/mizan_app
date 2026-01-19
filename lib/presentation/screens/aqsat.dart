@@ -9,10 +9,6 @@ class Aqsat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    // num qest;
-    // num qestTime;
-    // String qestNote;
    
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -22,30 +18,35 @@ class Aqsat extends StatelessWidget {
         onPressed: (){
           showDialog(context: context,
            builder: (context)=>AddQuest());
+           
         },
         ),
       backgroundColor: AppColors.babyBlue,
-      body: Column(children: [
-        MizanLabel(txt: AppStrings.AqsatLabel),
-        const SizedBox(height: 20,),
-       Text(AppStrings.noAqsat,
-        style:const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
-          color: AppColors.blue
-        ),),
-         const SizedBox(height: 20,),
-        Container(width: 300,height: 300,
-        decoration: BoxDecoration(
-          image:const DecorationImage(image: AssetImage("assets/images/no quest.gif")),
-          borderRadius: BorderRadius.circular(30),
-          color: AppColors.lightBlue
-        ),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          MizanLabel(txt: AppStrings.AqsatLabel),
+          const SizedBox(height: 20,),
         
-       ),
-    
-       
-      ],),
+         
+         Text(AppStrings.noAqsat,
+          style:const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: AppColors.blue
+          ),),
+           const SizedBox(height: 20,),
+          Container(width: 300,height: 300,
+          decoration: BoxDecoration(
+            image:const DecorationImage(image: AssetImage("assets/images/no quest.gif")),
+            borderRadius: BorderRadius.circular(30),
+            color: AppColors.lightBlue
+          ),
+          
+         ),
+            
+         
+        ],),
+      ),
     );
   }
 }

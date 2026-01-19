@@ -5,6 +5,7 @@ import 'package:mizan_app/presentation/screens/home_screen.dart';
 import 'package:mizan_app/presentation/screens/login_screen.dart';
 import 'package:mizan_app/presentation/screens/masrouf.dart';
 import 'package:mizan_app/presentation/screens/personal_data.dart';
+import 'package:mizan_app/presentation/screens/show_qest.dart';
 // import 'package:mizan_app/presentation/screens/show_qest.dart';
 import 'package:mizan_app/presentation/screens/splash_screen.dart';
 
@@ -18,7 +19,7 @@ abstract class AppRoutes {
   static const aqsat="/aqsat";
   static const masrouf="/masrouf";
   static const personalData="/personalData";
-  // static const showqest="/showQest";
+  static const showqest="/showQest";
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings){
 
@@ -45,8 +46,8 @@ abstract class AppRoutes {
       case personalData:
       return  MaterialPageRoute(builder: (_)=>const PersonalData());
 
-      // case showqest:
-      // return MaterialPageRoute(builder: (_)=>const ShowQest(qest: '', qestTime: '', qestNote: '',));
+      case showqest:
+      return MaterialPageRoute(builder: (_)=>const ShowQest(qest: '', qestTime: '', qestNote: '',));
 
     }
     

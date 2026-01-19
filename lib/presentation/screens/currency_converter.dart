@@ -82,15 +82,15 @@ class _CurrencyConverterState extends State<CurrencyConverter> {
   Widget build(BuildContext context) {
     return Scaffold(
 backgroundColor: AppColors.babyBlue,
-body: Form(
-   key: _formKey,
-  child: Column(children: [
-  
-    MizanLabel(txt:
-     AppStrings.currencyConverter),
-  
-     Flexible(
-       child: Row(
+body: SingleChildScrollView(
+  child: Form(
+     key: _formKey,
+    child: Column(children: [
+    
+      MizanLabel(txt:
+       AppStrings.currencyConverter),
+    
+       Row(
          children: [
            DropdownButton( 
              dropdownColor: AppColors.lightBlue,
@@ -118,47 +118,47 @@ body: Form(
        
              Text(AppStrings.chooseCurrency,
              style:const TextStyle(
-                fontSize: 20,
+                fontSize: 15,
                   color: AppColors.black,
                 fontWeight: FontWeight.bold,
                 fontFamily: "ReadexPro",),),
          ],
        ),
-     ),
-     const SizedBox(height: 20,),
-  
-     Currency(currencyController: currencyController),
-
-     ConvertButtom(onPressed: () { 
-      if(_formKey.currentState!.validate()){
-        setState(() {
-          currencyResult= double.parse(currencyController.text) / moneyFelow[selectedCurrency]!;
-          print(currencyResult);
-        });
-      }
-     }
-      ),
-     const SizedBox(height: 20,),
-
-     Container(
-      width: 300,
-     height: 200,
-     decoration: BoxDecoration(
-      color: AppColors.blue,
-      borderRadius: BorderRadius.circular(20),
+      //  const SizedBox(height: 10,),
     
-     ),
-     
-     child: Text("$selectedCurrency! (${currencyController.text}) = $currencyResult USD",
-     textAlign: TextAlign.center,
-     style:const TextStyle(
-      color: AppColors.white,
-      fontSize: 25,
-      fontFamily: "ReadexPro",),
-     ),
-     )
-     
-  ],),
+       Currency(currencyController: currencyController),
+    
+       ConvertButtom(onPressed: () { 
+        if(_formKey.currentState!.validate()){
+          setState(() {
+            currencyResult= double.parse(currencyController.text) / moneyFelow[selectedCurrency]!;
+            print(currencyResult);
+          });
+        }
+       }
+        ),
+      //  const SizedBox(height: 10,),
+    
+       Container(
+        width: 300,
+       height: 200,
+       decoration: BoxDecoration(
+        color: AppColors.blue,
+        borderRadius: BorderRadius.circular(20),
+      
+       ),
+       
+       child: Text("$selectedCurrency! (${currencyController.text}) = $currencyResult USD",
+       textAlign: TextAlign.center,
+       style:const TextStyle(
+        color: AppColors.white,
+        fontSize: 25,
+        fontFamily: "ReadexPro",),
+       ),
+       )
+       
+    ],),
+  ),
 ),
 
     );

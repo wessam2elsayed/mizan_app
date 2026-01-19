@@ -125,46 +125,8 @@ class _MasroufState extends State<Masrouf> {
                  ],
                ),
              ),
-           ) ,
-
-
-
-
-
-
-         
-                ElevatedButton(onPressed: (){
-                final box = HiveModel().box;
-    if (box != null && box.isNotEmpty) {
-      box.toMap().forEach((email, userData) {
-        print("\n━━━━━━━━━━━━━━━━━━━━");
-        print("📧 Email: $email");
-        print("👤 Name: ${userData['name']}");
-        print("💰 Salary: ${userData['salary']}");
-        print("🏦 Balance: ${userData['balance']}");
-        print("🌍 Country: ${userData['country']}");
-      });
-    } else {
-      print("No data found!");
-    }
-                 
-                },
-                 child: Text(AppStrings.name)),
-      
-                 ElevatedButton(onPressed: (){
-                  setState(() {
-                    HiveModel().clearAllData();
-                        
-      
-          var emptyData = HiveModel().getData(); 
-          print("List Length: ${emptyData.length}");
-          
-        });
-      
-      
-            
-                },
-                 child: Text(AppStrings.email)),
+           ) ,        
+               
       ],)
     );
   }
